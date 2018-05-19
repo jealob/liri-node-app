@@ -64,15 +64,17 @@ function twitterFunc(act) {
       let tweetsOutput;
       tweetsOutput = `\nTweets Output
         \nTwitter Handler: @${userTweets[0].user.screen_name}
-        \nUser Name: @ ${userTweets[0].user.name}
+        \nUser Name: @${userTweets[0].user.name}
         \n-----Tweets-----
         `;
       for (let i in userTweets) {
         tweetsOutput += `\nTweet ${(parseInt(i)) + 1}: ${userTweets[i].text}
         \ntweet Time : ${userTweets[i].created_at}\n`;
       }
+      tweetsOutput += "\n -------------------";
       console.log(tweetsOutput);
-      appendOutput(tweetsOutput)
+      // Outputs to log.txt
+      appendOutput(tweetsOutput);
       // console.log(JSON.parse(response));  // Raw response object.
     };
   });
@@ -91,8 +93,11 @@ function spotifyFunc(act, media) {
         \nAlbum : ${musicInfo.album.name}
         \nDuration (Minutes): ${parseFloat((musicInfo.duration_ms / 60000).toFixed(2))} 
         \nPreview Link from Spotify: ${musicInfo.external_urls.spotify}
-        \nPopularity : ${musicInfo.popularity}`;
+        \nPopularity : ${musicInfo.popularity}
+        \n -------------------`;
+
         console.log(spotifyOutput);
+        // Outputs to log.txt
         appendOutput(spotifyOutput);
     })
     .catch(function (err) {
@@ -121,8 +126,9 @@ function OMDBFunc(act, media) {
          \nLanguage of the movie.: ${movieInfo.Language}
          \nPlot of the movie: ${movieInfo.Plot}
          \nActors in the movie.: ${movieInfo.Actors}
-      `;
+         \n -------------------`;
         console.log(movieOutput);
+        // Outputs to log.txt
         appendOutput(movieInfo)
       }
       else {
@@ -143,7 +149,7 @@ function appendOutput(info) {
 
     // If no error is experienced, we'll log the phrase "Content Added" to our node console.
     else {
-      console.log("Content Added!");
+      console.log("Content Added to log.txt!");
     }
 
   });
