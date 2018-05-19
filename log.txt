@@ -1,0 +1,46 @@
+
+Tweets Output
+        
+Twitter Handler: @AlexObaseki1
+        
+User Name: @ Jango
+        
+-----Tweets-----
+        
+Tweet 1: Jango way to go
+        
+tweet Time : Fri May 18 22:02:29 +0000 2018
+
+Tweet 2: RT @tim_cook: Thank you 🙏 @csdeagles for welcoming me and @NyleDiMarco today! Thrilled to work with you to expand coding education. #GAAD h…
+        
+tweet Time : Fri May 18 21:59:09 +0000 2018
+
+Tweet 3: RT @GlacierNPS: Not many people come to Glacier for the architecture or engineering but it's hard to miss it once you arrive. #GoingtotheSu…
+        
+tweet Time : Fri May 18 21:59:02 +0000 2018
+
+Tweet 4: RT @BestPixMN: The hidden falls in Big Woods State Park. https://t.co/qzwuxgt2Nr
+        
+tweet Time : Fri May 18 21:57:39 +0000 2018
+
+Tweet 5: RT @SenJohnMcCain: Happy 37th anniversary to my love @cindymccain - time flies when you’re having fun! https://t.co/eivKVUylHb
+        
+tweet Time : Fri May 18 21:57:31 +0000 2018
+
+Tweet 6: This is really nice https://t.co/tP5fdh8r5Z
+        
+tweet Time : Tue May 15 19:53:12 +0000 2018
+[object Object]
+Spotify Output
+        
+Artist(s): Backstreet Boys
+        
+The Song's Name: I Want It That Way
+        
+Album : The Hits--Chapter One
+        
+Duration (Minutes): 3.56 
+        
+Preview Link from Spotify: https://open.spotify.com/track/6e40mgJiCid5HRAGrbpGA6
+        
+Popularity : 77

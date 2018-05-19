@@ -25,11 +25,11 @@ if (!action) {
       return console.log(error);
     }
     myData = data.split(",");
-  // Pass input action and mediaName
+    // Pass input action and mediaName
     findAPI(myData[0], myData[1]);
   });
 }
-  // Pass input action and mediaName
+// Pass input action and mediaName
 else {
   findAPI(action, mediaName);
 };
@@ -61,19 +61,18 @@ function twitterFunc(act) {
     }
     else {
       let userTweets = tweets;
-      console.log(userTweets[0]);
-      console.log(
-        `\nTwitter Handler: @ ${userTweets[0].user.screen_name}
+      let tweetsOutput;
+      tweetsOutput = `\nTweets Output
+        \nTwitter Handler: @${userTweets[0].user.screen_name}
         \nUser Name: @ ${userTweets[0].user.name}
-        \n\n-----Tweets-----
-        `);
-        for (let i in  userTweets){
-          console.log(`
-        \nTweet ${(parseInt(i))+1}: ${userTweets[i].text}
-        \ntweet Time : ${userTweets[i].created_at}\n
-    `);
-        }
-        // The favorites.
+        \n-----Tweets-----
+        `;
+      for (let i in userTweets) {
+        tweetsOutput += `\nTweet ${(parseInt(i)) + 1}: ${userTweets[i].text}
+        \ntweet Time : ${userTweets[i].created_at}\n`;
+      }
+      console.log(tweetsOutput);
+      appendOutput(tweetsOutput)
       // console.log(JSON.parse(response));  // Raw response object.
     };
   });
@@ -85,14 +84,16 @@ function spotifyFunc(act, media) {
   spotify.search({ type: 'track', query: media })
     .then(function (response) {
       let musicInfo = response.tracks.items[0];
-      console.log(
-        `\nArtist(s): ${musicInfo.artists[0].name}
+      let spotifyOutput =
+        `\nSpotify Output
+        \nArtist(s): ${musicInfo.artists[0].name}
         \nThe Song's Name: ${musicInfo.name}
         \nAlbum : ${musicInfo.album.name}
         \nDuration (Minutes): ${parseFloat((musicInfo.duration_ms / 60000).toFixed(2))} 
         \nPreview Link from Spotify: ${musicInfo.external_urls.spotify}
-        \nPopularity : ${musicInfo.popularity}
-    `);
+        \nPopularity : ${musicInfo.popularity}`;
+        console.log(spotifyOutput);
+        appendOutput(spotifyOutput);
     })
     .catch(function (err) {
       console.log(err);
@@ -110,8 +111,9 @@ function OMDBFunc(act, media) {
       // Check whether or not the movie exist
       if (!movieInfo.Error) {
         // If movie exist print movie information
-        console.log(
-          `\nTitle of the movie: ${movieInfo.Title}
+        let movieOutput =
+          `\nOMDB Output
+        \nTitle of the movie: ${movieInfo.Title}
          \nDate the movie was Released: ${movieInfo.Released}
          \nIMDB Rating of the movie.: ${(movieInfo.Ratings[0]) ? movieInfo.Ratings[0].Value : "N/A"}
          \nRotten Tomatoes Rating of the movie.: ${(movieInfo.Ratings[1]) ? movieInfo.Ratings[1].Value : "N/A"}
@@ -119,7 +121,9 @@ function OMDBFunc(act, media) {
          \nLanguage of the movie.: ${movieInfo.Language}
          \nPlot of the movie: ${movieInfo.Plot}
          \nActors in the movie.: ${movieInfo.Actors}
-      `);
+      `;
+        console.log(movieOutput);
+        appendOutput(movieInfo)
       }
       else {
         // Else print value of Error"Movie not found!"
@@ -129,3 +133,18 @@ function OMDBFunc(act, media) {
   });
 }
 
+function appendOutput(info) {
+  fs.appendFile("log.txt", info, function (err) {
+
+    // If an error was experienced we say it.
+    if (err) {
+      console.log(err);
+    }
+
+    // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+    else {
+      console.log("Content Added!");
+    }
+
+  });
+}
