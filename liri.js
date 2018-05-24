@@ -23,7 +23,7 @@ if (!action) {
   // No Input action, get action and media from random.txt file
   readText();
 }
-else if (action === "do-what-it-say") {
+else if (action === "do-what-it-says") {
   readText();
 }
 // Pass input action and mediaName
