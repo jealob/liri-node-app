@@ -10,14 +10,28 @@ let request = require("request");
 // Grab User's Input
 let userInput = (process.argv).slice(2);
 let action = userInput[0];
-let mediaName = "";
+let mediaName;
 for (let i = 1; i < userInput.length; i++) {
   mediaName += " " + userInput[i];
 }
 
+if (mediaName) {
+  console.log("media Name: ", mediaName);
+}
 //Check if there is an input argument  
-debugger;
 if (!action) {
+  // No Input action, get action and media from random.txt file
+  readText();
+}
+else if (action === "do-what-it-say") {
+  readText();
+}
+// Pass input action and mediaName
+else {
+  findAPI(action, mediaName);
+};
+
+function readText() {
   // No Input action, get action and media from random.txt file
   fs.readFile("random.txt", "utf8", function (error, data) {
     // Error Handler
@@ -29,10 +43,6 @@ if (!action) {
     findAPI(myData[0], myData[1]);
   });
 }
-// Pass input action and mediaName
-else {
-  findAPI(action, mediaName);
-};
 
 function findAPI(act, media) {
   // Determine the API to call...
@@ -96,9 +106,9 @@ function spotifyFunc(act, media) {
         \nPopularity : ${musicInfo.popularity}
         \n -------------------`;
 
-        console.log(spotifyOutput);
-        // Outputs to log.txt
-        appendOutput(spotifyOutput);
+      console.log(spotifyOutput);
+      // Outputs to log.txt
+      appendOutput(spotifyOutput);
     })
     .catch(function (err) {
       console.log(err);
