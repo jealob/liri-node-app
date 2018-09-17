@@ -24,6 +24,7 @@ if (!action) {
   readText();
 }
 else if (action === "do-what-it-says") {
+  // get action and media from random.txt file
   readText();
 }
 // Pass input action and mediaName
@@ -58,7 +59,7 @@ function findAPI(act, media) {
       (media) ? OMDBFunc(act, media) : OMDBFunc(act, 'Mr. Nobody.');
       break;
     default:
-      console.log("This shouldn't be happening");
+      console.log("Action not found! \nType in the correct input; \n'my-tweets', 'spotify-this-song', 'movie-this' or 'do-what-it-says'");
   }
 }
 
